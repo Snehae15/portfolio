@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/colors.dart';
 import 'package:flutter_portfolio/constants/size.dart';
-import 'package:flutter_portfolio/constants/skill_items.dart';
 import 'package:flutter_portfolio/widgets/drawer_mobile.dart';
 import 'package:flutter_portfolio/widgets/headerdesktop.dart';
 import 'package:flutter_portfolio/widgets/headermobile.dart';
 import 'package:flutter_portfolio/widgets/main_desktop.dart';
 import 'package:flutter_portfolio/widgets/main_mobile.dart';
+import 'package:flutter_portfolio/widgets/skill_desktop.dart';
+import 'package:flutter_portfolio/widgets/skill_mobile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -50,77 +51,116 @@ class _HomePageState extends State<HomePage> {
 
               // Skill Section
               Container(
-                width: screenSize.width / 2,
+                width: screenSize.width < kMedDesktopWidth
+                    ? screenSize.width
+                    : screenSize.width / 2,
                 padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
-                height: 500,
                 color: CustomColor.bgLight1,
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Title
                     const Text(
-                      "What I can Do",
+                      "What I Can Do",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: CustomColor.whitePrimary,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 50),
                     // Platforms and skills
-                    Container(
-                      constraints: const BoxConstraints(maxWidth: 450),
-                      child: Wrap(
-                        spacing: 8.0,
-                        runSpacing: 8.0,
-                        children: [
-                          for (int i = 0; i < platformItems.length; i++)
-                            Container(
-                              width: 200,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: CustomColor.bgLight2,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: ListTile(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0, vertical: 10.0),
-                                leading: Image.asset(
-                                  platformItems[i]["img"],
-                                  width: 26,
-                                ),
-                                title: Text(
-                                  platformItems[i]["title"],
-                                  style: const TextStyle(
-                                    color: CustomColor.whitePrimary,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          // skills
-                          Wrap(
-                            children: [
-                              for (int i = 0; i < skillItems.length; i++)
-                                Chip(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 12, horizontal: 16.0),
-                                  label: Text(skillItems[i]["img"]),
-                                  avatar: Image.asset(skillItems[i]["title"]),
-                                )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                    if (constraints.maxWidth >= kMedDesktopWidth)
+                      const SkillDesktop()
+                    else
+                      const SkillMobile(),
                   ],
                 ),
               ),
               // Project Section
               Container(
-                height: 500,
-                width: double.infinity,
-                color: Colors.blueGrey,
+                width: screenSize.width / 2,
+                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                child: Column(
+                  children: [
+                    //Work project title
+                    const Text(
+                      "What I Can Do",
+                      style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                          color: CustomColor.whitePrimary),
+                    ),
+                    //work projects cards
+                    Container(
+                      height: 280,
+                      width: 250,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: CustomColor.bgLight2),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          //img
+                          Image.asset(
+                            "assets/projects/campus.png",
+                            height: 140,
+                            width: 250,
+                            fit: BoxFit.cover,
+                          ),
+                          //project name
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(12, 15, 12, 12),
+                            child: const Text(
+                              "Campus Recruitment",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: CustomColor.whitePrimary),
+                            ),
+                          ),
+                          // Subtitle
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(12, 0, 12, 12),
+                            child: Text(
+                              "An Application for College campus recruitment",
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  color: CustomColor.whitePrimary),
+                            ),
+                          ),
+                          const Spacer(),
+                          //Footer Section
+                          Container(
+                            width: double.infinity,
+                            color: CustomColor.bgLight1,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 10),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Available on:",
+                                  style: TextStyle(
+                                    color: CustomColor.yellowSecondary,
+                                    fontSize: 10,
+                                  ),
+                                ),
+                                Spacer(),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Image.asset(
+                                    "assets/github.png",
+                                    width: 17,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
               // Contact Section
               Container(
@@ -128,12 +168,8 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 color: Colors.blueGrey,
               ),
-              // Footer Section
-              Container(
-                height: 500,
-                width: double.infinity,
-                color: Colors.blueGrey,
-              ),
+              //
+              //Footer Section
             ],
           ),
         );

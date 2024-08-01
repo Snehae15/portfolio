@@ -30,7 +30,7 @@ const List<Map> skillItems = [
     "title": "HTML5",
   },
   {
-    "img": "assets/css3.png",
+    "img": "assets/css_icons.png",
     "title": "CSS3",
   },
   {
@@ -38,7 +38,7 @@ const List<Map> skillItems = [
     "title": "Firebase",
   },
   {
-    "img": "assets/bootstrap.png",
+    "img": "assets/bootstrap.jpg",
     "title": "Bootstrap",
   },
   {
