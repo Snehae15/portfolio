@@ -19,21 +19,34 @@ class DrawerMobile extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: Icon(Icons.close),
+                icon: const Icon(Icons.close, color: CustomColor.whitePrimary),
               ),
             ),
           ),
-          for (int i = 0; i < navIcons.length; i++)
+          // Iterate over navIcons and navTitles to create ListTiles with dividers
+          for (int i = 0; i < navIcons.length; i++) ...[
             ListTile(
               contentPadding: const EdgeInsets.symmetric(horizontal: 30.0),
               titleTextStyle: const TextStyle(
-                  color: CustomColor.whitePrimary,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16),
-              onTap: () {},
-              leading: Icon(navIcons[i]),
+                color: CustomColor.whitePrimary,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
+              onTap: () {
+                // Add your onTap logic here
+              },
+              leading: Icon(navIcons[i], color: CustomColor.whitePrimary),
               title: Text(navTitles[i]),
-            )
+            ),
+            // Add a divider after each ListTile except the last one
+            if (i < navIcons.length - 1)
+              const Divider(
+                color: CustomColor.whitePrimary,
+                thickness: 0.5,
+                indent: 30,
+                endIndent: 30,
+              ),
+          ]
         ],
       ),
     );

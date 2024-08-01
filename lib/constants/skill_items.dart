@@ -50,7 +50,32 @@ const List<Map> skillItems = [
     "title": "GitHub",
   },
   {
+    "img": "assets/figma.png",
+    "title": "Figma",
+  },
+  {
     "img": "assets/c.png",
     "title": "C",
   },
+  {
+    "img": "assets/hivedb.jpg",
+    "title": "Hive Db",
+  },
+  {
+    "img": "assets/msoffice.png",
+    "title": "MS Office",
+  },
+  {
+    "img": "assets/mysql.jpg",
+    "title": "MySql",
+  },
+  {
+    "img": "assets/python.jpg",
+    "title": "Python flask",
+  },
+  {
+    "img": "assets/restapi.png",
+    "title": "Rest-API",
+  },
+  // {"img": "assets/", "": ""}
 ];

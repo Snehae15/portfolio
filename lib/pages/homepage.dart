@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/colors.dart';
 import 'package:flutter_portfolio/constants/size.dart';
+import 'package:flutter_portfolio/widgets/custom_text_field.dart';
 import 'package:flutter_portfolio/widgets/drawer_mobile.dart';
 import 'package:flutter_portfolio/widgets/headerdesktop.dart';
 import 'package:flutter_portfolio/widgets/headermobile.dart';
 import 'package:flutter_portfolio/widgets/main_desktop.dart';
 import 'package:flutter_portfolio/widgets/main_mobile.dart';
+import 'package:flutter_portfolio/widgets/projects_section.dart';
 import 'package:flutter_portfolio/widgets/skill_desktop.dart';
 import 'package:flutter_portfolio/widgets/skill_mobile.dart';
 
@@ -17,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +53,9 @@ class _HomePageState extends State<HomePage> {
 
               // Skill Section
               Container(
-                width: screenSize.width < kMedDesktopWidth
+                width: constraints.maxWidth < kMedDesktopWidth
                     ? screenSize.width
-                    : screenSize.width / 2,
+                    : screenSize.width * 0.75, // Flexible width
                 padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
                 color: CustomColor.bgLight1,
                 child: Column(
@@ -78,98 +80,63 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               // Project Section
+              ProjectsSection(),
+              // Contact Section
               Container(
-                width: screenSize.width / 2,
-                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                color: CustomColor.bgLight1,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //Work project title
                     const Text(
-                      "What I Can Do",
+                      "Get in touch",
                       style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                          color: CustomColor.whitePrimary),
-                    ),
-                    //work projects cards
-                    Container(
-                      height: 280,
-                      width: 250,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: CustomColor.bgLight2),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          //img
-                          Image.asset(
-                            "assets/projects/campus.png",
-                            height: 140,
-                            width: 250,
-                            fit: BoxFit.cover,
-                          ),
-                          //project name
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(12, 15, 12, 12),
-                            child: const Text(
-                              "Campus Recruitment",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: CustomColor.whitePrimary),
-                            ),
-                          ),
-                          // Subtitle
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(12, 0, 12, 12),
-                            child: Text(
-                              "An Application for College campus recruitment",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: CustomColor.whitePrimary),
-                            ),
-                          ),
-                          const Spacer(),
-                          //Footer Section
-                          Container(
-                            width: double.infinity,
-                            color: CustomColor.bgLight1,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 10),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "Available on:",
-                                  style: TextStyle(
-                                    color: CustomColor.yellowSecondary,
-                                    fontSize: 10,
-                                  ),
-                                ),
-                                Spacer(),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Image.asset(
-                                    "assets/github.png",
-                                    width: 17,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColor.whitePrimary,
                       ),
-                    )
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Flexible(
+                          child: CustomTextField(
+                            hintText: "Your Name",
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                        Flexible(
+                          child: CustomTextField(
+                            hintText: "Your Email",
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    Flexible(
+                      child: CustomTextField(
+                        hintText: "Your Message",
+                        maxLines: 5,
+                      ),
+                    ),
                   ],
                 ),
               ),
-              // Contact Section
+              // Footer Section
               Container(
-                height: 500,
-                width: double.infinity,
-                color: Colors.blueGrey,
+                color: CustomColor.bgLight1,
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: Text(
+                    "© 2024 Your Portfolio",
+                    style: TextStyle(
+                      color: CustomColor.whitePrimary,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
               ),
-              //
-              //Footer Section
             ],
           ),
         );
