@@ -103,9 +103,7 @@ class _MainMobileState extends State<MainMobile>
                 duration: Duration(milliseconds: 1000),
               ),
             ),
-            const SizedBox(
-              height: 5,
-            ),
+            const SizedBox(height: 5),
             TextAnimator(
               "Flutter Developer",
               style: const TextStyle(
@@ -118,7 +116,17 @@ class _MainMobileState extends State<MainMobile>
                 duration: Duration(milliseconds: 1000),
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
+            const Text(
+              "About",
+              style: TextStyle(
+                fontSize: 20,
+                height: 1.5,
+                fontWeight: FontWeight.bold,
+                color: CustomColor.bgLight2,
+              ),
+            ),
+            const SizedBox(height: 15),
             // About text
             const Text(
               "I specialize in creating dynamic and responsive mobile applications using Flutter. "

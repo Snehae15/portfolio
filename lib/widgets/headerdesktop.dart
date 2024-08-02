@@ -11,13 +11,13 @@ class Headerdesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60.0,
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
       width: double.maxFinite,
       decoration: kHeaderDecoration,
       child: Row(
         children: [
-          SiteLogo(),
-          Spacer(),
+          const SiteLogo(),
+          const Spacer(),
           for (int i = 0; i < navTitles.length; i++)
             Padding(
               padding: EdgeInsets.only(right: 20),

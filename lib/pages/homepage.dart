@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/colors.dart';
 import 'package:flutter_portfolio/constants/size.dart';
-import 'package:flutter_portfolio/widgets/custom_text_field.dart';
+import 'package:flutter_portfolio/widgets/contact_section.dart';
 import 'package:flutter_portfolio/widgets/drawer_mobile.dart';
 import 'package:flutter_portfolio/widgets/headerdesktop.dart';
 import 'package:flutter_portfolio/widgets/headermobile.dart';
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 width: constraints.maxWidth < kMedDesktopWidth
                     ? screenSize.width
-                    : screenSize.width * 0.75, // Flexible width
+                    : screenSize.width * 0.75,
                 padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
                 color: CustomColor.bgLight1,
                 child: Column(
@@ -80,54 +80,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               // Project Section
-              ProjectsSection(),
+              const ProjectsSection(),
               // Contact Section
-              Container(
-                color: CustomColor.bgLight1,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Get in touch",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: CustomColor.whitePrimary,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: CustomTextField(
-                            hintText: "Your Name",
-                          ),
-                        ),
-                        const SizedBox(width: 15),
-                        Flexible(
-                          child: CustomTextField(
-                            hintText: "Your Email",
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    Flexible(
-                      child: CustomTextField(
-                        hintText: "Your Message",
-                        maxLines: 5,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              const ContactSection(),
+
               // Footer Section
               Container(
                 color: CustomColor.bgLight1,
                 padding: const EdgeInsets.all(20),
-                child: Center(
+                child: const Center(
                   child: Text(
                     "© 2024 Your Portfolio",
                     style: TextStyle(

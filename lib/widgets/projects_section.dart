@@ -8,11 +8,10 @@ class ProjectsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth =
-        MediaQuery.of(context).size.width; // Correctly getting screen width
+    final double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      width: screenWidth * 0.75, // Adjusted width based on screen width
+      width: screenWidth,
       padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,22 +19,25 @@ class ProjectsSection extends StatelessWidget {
           const Text(
             "Projects",
             style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: CustomColor.whitePrimary),
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              color: CustomColor.whitePrimary,
+            ),
           ),
           const SizedBox(height: 50),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 900),
-            child: Wrap(
-              spacing: 30,
-              runSpacing: 30,
-              children: myProjectUtils.map((project) {
-                return ProjectCardWidget(
-                    screenSize: Size(screenWidth,
-                        double.infinity), // Use Size to avoid issues
-                    project: project);
-              }).toList(),
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 900),
+              child: Wrap(
+                spacing: 40,
+                runSpacing: 40,
+                children: myProjectUtils.map((project) {
+                  return ProjectCardWidget(
+                    screenSize: Size(screenWidth, double.infinity),
+                    project: project,
+                  );
+                }).toList(),
+              ),
             ),
           ),
         ],
