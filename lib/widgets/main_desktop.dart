@@ -57,7 +57,7 @@ class MainDesktop extends StatelessWidget {
                   ),
                   incomingEffect:
                       WidgetTransitionEffects.incomingSlideInFromLeft(
-                    duration: Duration(milliseconds: 1000),
+                    duration: const Duration(milliseconds: 1000),
                   ),
                 ),
                 const SizedBox(
@@ -73,9 +73,20 @@ class MainDesktop extends StatelessWidget {
                   ),
                   incomingEffect:
                       WidgetTransitionEffects.incomingSlideInFromLeft(
-                    duration: Duration(milliseconds: 1000),
+                    duration: const Duration(milliseconds: 1000),
                   ),
                 ),
+                const SizedBox(height: 10),
+                const Text(
+                  "About",
+                  style: TextStyle(
+                    fontSize: 20,
+                    height: 1.5,
+                    fontWeight: FontWeight.bold,
+                    color: CustomColor.bgLight2,
+                  ),
+                ),
+
                 const SizedBox(height: 8),
                 // About text
                 const Text(
@@ -93,7 +104,7 @@ class MainDesktop extends StatelessWidget {
                 WidgetAnimator(
                   incomingEffect:
                       WidgetTransitionEffects.incomingSlideInFromBottom(
-                    duration: Duration(milliseconds: 1000),
+                    duration: const Duration(milliseconds: 1000),
                   ),
                   child: SizedBox(
                     width: 250,
@@ -120,7 +131,7 @@ class MainDesktop extends StatelessWidget {
           const SizedBox(width: 16),
           WidgetAnimator(
             incomingEffect: WidgetTransitionEffects.incomingSlideInFromRight(
-              duration: Duration(milliseconds: 1500),
+              duration: const Duration(milliseconds: 1500),
             ),
             child: Flexible(
               child: Image.asset(

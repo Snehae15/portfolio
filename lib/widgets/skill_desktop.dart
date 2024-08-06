@@ -43,10 +43,10 @@ class SkillDesktop extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: 20), // Space between platform and skills
+        const SizedBox(width: 20), // Space between platform and skills
         Flexible(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 500),
+            constraints: const BoxConstraints(maxWidth: 500),
             child: Wrap(
               spacing: 10.0,
               runSpacing: 10.0,
@@ -54,7 +54,7 @@ class SkillDesktop extends StatelessWidget {
                 for (int i = 0; i < skillItems.length; i++)
                   Chip(
                     padding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
+                        const EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
                     backgroundColor: CustomColor.bgLight2,
                     label: Text(skillItems[i]["title"]),
                     avatar: Image.asset(skillItems[i]["img"]),

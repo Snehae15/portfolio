@@ -8,7 +8,7 @@ class SkillMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: 500.0),
+      constraints: const BoxConstraints(maxWidth: 500.0),
       child: Column(
         children: [
           //platform
@@ -22,7 +22,7 @@ class SkillMobile extends StatelessWidget {
               ),
               child: ListTile(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 leading: Image.asset(
                   platformItems[i]["img"],
                   width: 26.0,
@@ -30,7 +30,7 @@ class SkillMobile extends StatelessWidget {
                 title: Text(platformItems[i]["title"]),
               ),
             ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           //skills
@@ -41,7 +41,7 @@ class SkillMobile extends StatelessWidget {
             children: [
               for (int i = 0; i < skillItems.length; i++)
                 Chip(
-                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
                   backgroundColor: CustomColor.bgLight2,
                   label: Text(skillItems[i]["title"]),
                   avatar: Image.asset(skillItems[i]["img"]),

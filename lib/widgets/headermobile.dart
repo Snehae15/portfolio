@@ -17,10 +17,10 @@ class Headermobile extends StatelessWidget {
           SiteLogo(
             onTap: onLogoTap,
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
             onPressed: onMenuTap,
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
           ),
           const SizedBox(
             width: 15,

@@ -66,25 +66,29 @@ class _MainMobileState extends State<MainMobile>
               ],
             ),
             const SizedBox(height: 20),
-            // Image with ShaderMask and animation
+            // Circular image with attractive borders and animation
             WidgetAnimator(
               incomingEffect: WidgetTransitionEffects.incomingSlideInFromTop(
                 duration: const Duration(milliseconds: 1200),
               ),
-              child: ShaderMask(
-                shaderCallback: (bounds) {
-                  return LinearGradient(
-                    colors: [
-                      CustomColor.scaffoldBg.withOpacity(0.6),
-                      CustomColor.scaffoldBg.withOpacity(0.6),
-                    ],
-                  ).createShader(bounds);
-                },
-                blendMode: BlendMode.srcATop,
-                child: Center(
-                  child: Image.asset(
-                    'assets/img4.jpg',
-                    width: screenSize.width / 2,
+              child: Center(
+                child: Container(
+                  width: screenSize.width / 2,
+                  height: screenSize.width / 2,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: CustomColor.yellowSecondary,
+                      width: 8.0,
+                    ),
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      'assets/img4.jpg',
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: double.infinity,
+                    ),
                   ),
                 ),
               ),
@@ -100,7 +104,7 @@ class _MainMobileState extends State<MainMobile>
                 color: CustomColor.whitePrimary,
               ),
               incomingEffect: WidgetTransitionEffects.incomingSlideInFromLeft(
-                duration: Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 1000),
               ),
             ),
             const SizedBox(height: 5),
@@ -113,7 +117,7 @@ class _MainMobileState extends State<MainMobile>
                 color: CustomColor.whitePrimary,
               ),
               incomingEffect: WidgetTransitionEffects.incomingSlideInFromLeft(
-                duration: Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 1000),
               ),
             ),
             const SizedBox(height: 10),
@@ -145,56 +149,59 @@ class _MainMobileState extends State<MainMobile>
               incomingEffect: WidgetTransitionEffects.incomingSlideInFromBottom(
                 duration: const Duration(milliseconds: 1000),
               ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 190,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Add your action for "Get in Touch"
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: CustomColor.yellowSecondary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 190,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Add your action for "Get in Touch"
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: CustomColor.yellowSecondary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        'Get in Touch',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  SizedBox(
-                    width: 210,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        // Action for downloading the resume
-                        // Example: launch a URL to download the resume
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: CustomColor.yellowSecondary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      icon: const Icon(Icons.download, color: Colors.white),
-                      label: const Text(
-                        'Resume',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                        child: const Text(
+                          'Get in Touch',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      width: 210,
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          // Action for downloading the resume
+                          // Example: launch a URL to download the resume
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: CustomColor.yellowSecondary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        icon: const Icon(Icons.download, color: Colors.white),
+                        label: const Text(
+                          'Resume',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

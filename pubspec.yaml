@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   open_file: ^3.3.2
+  url_launcher: ^6.3.0
   widget_and_text_animator: ^1.1.5
 
 dev_dependencies:

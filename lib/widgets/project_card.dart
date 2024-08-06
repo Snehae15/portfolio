@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constants/colors.dart';
 import 'package:flutter_portfolio/utils/project_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCardWidget extends StatefulWidget {
   const ProjectCardWidget({
-    Key? key,
+    super.key,
     required this.screenSize,
     required this.project,
-  }) : super(key: key);
+  });
 
   final Size screenSize;
   final ProjectUtil project;
@@ -27,8 +28,8 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
-        height: _isHovered ? 350 : 300, // Increase height on hover
-        width: _isHovered ? 280 : 260, // Increase width on hover
+        height: _isHovered ? 350 : 300,
+        width: _isHovered ? 280 : 260,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: CustomColor.bgLight2,
@@ -82,17 +83,20 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
                     ),
                   ),
                   const Spacer(),
-                  if (widget.project.link != null)
-                    InkWell(
-                      onTap: () {
-                        // Open link in a new tab
-                        // Use your preferred method to open the link
-                      },
-                      child: Image.asset(
-                        "assets/github.png",
-                        width: 17,
-                      ),
+                  InkWell(
+                    onTap: () async {
+                      final url = widget.project.link;
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Image.asset(
+                      "assets/github.png",
+                      width: 17,
                     ),
+                  ),
                 ],
               ),
             ),

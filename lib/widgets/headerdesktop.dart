@@ -5,7 +5,11 @@ import 'package:flutter_portfolio/style/style.dart';
 import 'package:flutter_portfolio/widgets/site_logo.dart';
 
 class Headerdesktop extends StatelessWidget {
-  const Headerdesktop({super.key});
+  const Headerdesktop({
+    super.key,
+    required this.onNavMenuTap,
+  });
+  final Function(int) onNavMenuTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +24,14 @@ class Headerdesktop extends StatelessWidget {
           const Spacer(),
           for (int i = 0; i < navTitles.length; i++)
             Padding(
-              padding: EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.only(right: 20),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  onNavMenuTap(i);
+                },
                 child: Text(
                   navTitles[i],
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: CustomColor.whitePrimary),
